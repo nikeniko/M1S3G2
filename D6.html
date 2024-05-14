@@ -258,6 +258,8 @@
         }
       };
 
+      revealFooterLink();
+
       /* ESERCIZIO 11
                      Crea una funzione che crei una tabella nell'elemento con id "tableArea".
                      La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
@@ -272,50 +274,58 @@
             price: "30000 L",
           },
           {
-            image: "path/to/image2.jpg",
-            name: "Prodotto 2",
-            quantity: 5,
-            price: "€20",
-          },
-          {
-            image: "path/to/image3.jpg",
-            name: "Prodotto 3",
-            quantity: 3,
-            price: "€15",
-          },
-          {
-            image: "path/to/image4.jpg",
-            name: "Prodotto 4",
+            image: "trasferimento.jpg",
+            name: "ringhio",
             quantity: 1,
-            price: "€5",
+            price: "500000 L",
           },
           {
-            image: "path/to/image5.jpg",
-            name: "Prodotto 5",
-            quantity: 4,
-            price: "€25",
+            image: "subaru-baracca.jpg",
+            name: "subaru baracca",
+            quantity: 1,
+            price: "200 L",
+          },
+          {
+            image: "maxresdefault.jpg",
+            name: "il momento",
+            quantity: 1,
+            price: "300000000 L",
+          },
+          {
+            image: "images.jpg",
+            name: "corso di arrampicata",
+            quantity: 1,
+            price: "3000 L",
           },
         ];
-        const tableArea = document.getElementById("tableArea");
+        const tableArea = document.getElementById("tableArea"); //  qui andiamo a cercare l'id
 
-        const table = document.createElement("table");
-        table.setAttribute("border", "1");
+        const table = document.createElement("table"); // qui creamo un elemento table
+        table.setAttribute("border", "1"); // qui al teable gli metiamo un border 1
 
-        const header = table.createTHead();
-        const headerRow = header.insertRow(0);
-        const headers = ["Immagine", "Nome Prodotto", "Quantità", "Prezzo"];
-        headers.forEach((text) => {
-          const cell = headerRow.insertCell();
-          cell.textContent = text;
-        });
-        const tbody = table.appendChild(document.createElement("tbody"));
-        products.forEach((product) => {
-          const row = tbody.insertRow();
-          row.insertCell().innerHTML = `<img src="${product.image}" alt="${product.name}" style="width: 50px; height: auto;">`;
-          row.insertCell().textContent = product.name;
-          row.insertCell().textContent = product.quantity;
-          row.insertCell().textContent = product.price;
-        });
+        const header = table.createTHead(); // qui creamo un head
+        const headerRow = header.insertRow(0); // viene inserito nella riga
+        const headers = ["Immagine", "Nome Prodotto", "Quantità", "Prezzo"]; // nell'header ci aggiungiamo i vari elementi
+        headers.forEach(
+          (
+            text // per ogni titolo viene creata una cella con all'interno il testo corrispondente
+          ) => {
+            const cell = headerRow.insertCell();
+            cell.textContent = text;
+          }
+        );
+        const tbody = table.appendChild(document.createElement("tbody")); // qui aggiungiamo un elemnto tbody
+        products.forEach(
+          (
+            product // per ogni prodotto dell'array viene creata un anuova righa nel tbody
+          ) => {
+            const row = tbody.insertRow();
+            row.insertCell().innerHTML = `<img src="${product.image}" alt="${product.name}" style="width: 50px; height: auto;">`;
+            row.insertCell().textContent = product.name;
+            row.insertCell().textContent = product.quantity;
+            row.insertCell().textContent = product.price;
+          }
+        );
         tableArea.innerHTML = "";
         tableArea.appendChild(table);
       };
